@@ -9,6 +9,7 @@
 
 import React, {Component} from 'react';
 import './App.css';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
@@ -82,7 +83,10 @@ class App extends Component {
             border: '1px solid blue',
             padding: '8px',
             cursor: 'pointer',
-          
+            ':hover':{
+                backgroundColor: 'lightgreen',
+                color: 'black'
+            }
         }
 
         /**
@@ -106,6 +110,10 @@ class App extends Component {
                 </div>
             );
             style.backgroundColor = 'red';
+            style[':hover'] = {
+                backgroundColor: 'salmon',
+                color: 'black'
+            }
         }
         let classes = [];
         if(this.state.persons.length <=2){
@@ -117,19 +125,22 @@ class App extends Component {
         classes = classes.join(" ");
 
         return (
-            <div className="App">
-                <h1>Hello. This is React</h1>
-                <p className={classes}>Following is a list of persons.</p>
-                <button 
-                    style={style}
-                    onClick={this.togglePersonsHandler}
-                    >Toggle Persons</button>
-                {persons}
-            </div>
+            <StyleRoot>
+                <div className="App">
+                    <h1>Hello. This is React</h1>
+                    <p className={classes}>Following is a list of persons.</p>
+                    <button 
+                        style={style}
+                        onClick={this.togglePersonsHandler}
+                        >Toggle Persons</button>
+                    {persons}
+                </div>
+            </StyleRoot>
         );
     };
    
 }
 
 
-export default App;
+// export default App;
+export default Radium(App);//Higher Order Component, wrapping our component
