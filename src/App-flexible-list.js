@@ -1,15 +1,12 @@
 /**
  * Last Lecture:
  * http://talentforge.vteamslabs.com/knowledge-base/react-the-complete-guide
- * Section 05. Part 04
- * To add pseudo css selectors in jsx, we need a package, radium
- * With Radium, you can also add media queries
- * npm install --save radium
+ * Section 04. Part 04
  */
 
 import React, {Component} from 'react';
+// import logo from './logo.svg';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
@@ -77,16 +74,12 @@ class App extends Component {
             /**
              * Restrictions: No hover possible yet in inline style in jsx
              */
-            color: 'white',
+            color: white,
             backgroundColor: 'green',
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer',
-            ':hover':{
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
+            cursor: 'pointer'
         }
 
         /**
@@ -109,38 +102,25 @@ class App extends Component {
                     })}
                 </div>
             );
-            style.backgroundColor = 'red';
-            style[':hover'] = {
-                backgroundColor: 'salmon',
-                color: 'black'
-            }
         }
-        let classes = [];
-        if(this.state.persons.length <=2){
-            classes.push('red');
-        }
-        if(this.state.persons.length <=1) {
-            classes.push('bold');
-        }
-        classes = classes.join(" ");
-
         return (
-            <StyleRoot>
-                <div className="App">
-                    <h1>Hello. This is React</h1>
-                    <p className={classes}>Following is a list of persons.</p>
-                    <button 
-                        style={style}
-                        onClick={this.togglePersonsHandler}
-                        >Toggle Persons</button>
-                    {persons}
-                </div>
-            </StyleRoot>
+            <div className="App">
+                <h1>Hello. This is Waqas</h1>
+
+                <button 
+                    style={style}
+                    onClick={this.togglePersonsHandler}
+                    >Toggle Persons</button>
+                {persons}
+                
+                
+            </div>
         );
     };
    
+
+
 }
 
 
-// export default App;
-export default Radium(App);//Higher Order Component, wrapping our component
+export default App;
