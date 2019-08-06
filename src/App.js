@@ -8,7 +8,7 @@
  */
 
 import React, {Component} from 'react';
-import './App.css';
+import appClasses from './App.module.css';
 import Person from './Person/Person';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
@@ -109,15 +109,15 @@ class App extends Component {
         }
         let classes = [];
         if(this.state.persons.length <=2){
-            classes.push('red');
+            classes.push(appClasses.red);
         }
         if(this.state.persons.length <=1) {
-            classes.push('bold');
+            classes.push(appClasses.bold);
         }
         classes = classes.join(" ");
 
         return (
-            <div className="App">
+            <div className={appClasses.App}>
                 <h1>Hello. This is React</h1>
                 <p className={classes}>Following is a list of persons.</p>
                 <button 
