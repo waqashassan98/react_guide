@@ -9,8 +9,8 @@
 
 import React, {Component} from 'react';
 import appClasses from './App.module.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBounday';
+import Person from '../components/Persons/Person/Person';
+import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
 // below this class
