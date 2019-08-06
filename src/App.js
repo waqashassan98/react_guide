@@ -10,6 +10,7 @@
 import React, {Component} from 'react';
 import appClasses from './App.module.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBounday';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
 // below this class
@@ -72,40 +73,32 @@ class App extends Component {
         this.setState({showPersons: !this.state.showPersons});
     }
     render(){
-        const style = {
-            /**
-             * Restrictions: No hover possible yet in inline style in jsx
-             */
-            color: 'white',
-            backgroundColor: 'green',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-          
-        }
+      
 
         /**
          * Conditional Output in JS
          */
         let persons = null;
+        let btnClass = null;
+
         if(this.state.showPersons){
             persons = (
                 <div>
                     {this.state.persons.map( (person,index) =>{
                         return (
-                         <Person 
-                            key = {person.id}
-                            name={person.name} 
-                            age={person.age} 
-                            click={()=> this.deletePersonHandler(index)}
-                            changed={(event) => this.nameChangedHandler(event, person.id)}
-                         />
+                            <ErrorBoundary key = {person.id}> 
+                                <Person 
+                                    name={person.name} 
+                                    age={person.age} 
+                                    click={()=> this.deletePersonHandler(index)}
+                                    changed={(event) => this.nameChangedHandler(event, person.id)}
+                                />
+                            </ErrorBoundary>
                         );
                     })}
                 </div>
             );
-            style.backgroundColor = 'red';
+            btnClass = appClasses.Red;
         }
         let classes = [];
         if(this.state.persons.length <=2){
@@ -121,7 +114,7 @@ class App extends Component {
                 <h1>Hello. This is React</h1>
                 <p className={classes}>Following is a list of persons.</p>
                 <button 
-                    style={style}
+                    className={btnClass}
                     onClick={this.togglePersonsHandler}
                     >Toggle Persons</button>
                 {persons}
