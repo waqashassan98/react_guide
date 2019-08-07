@@ -16,6 +16,27 @@ import Cockpit from '../components/Cockpit/Cockpit';
 //To add state, use this or use lifecycle hooks we needed create a class which extends from component. Otherwise see the commented code
 // below this class
 class App extends Component {
+    constructor(props){
+        super(props);
+        console.log("[app.js] Inside Constructor ", props);
+        this.state = {
+            persons : [
+                {id: '1', name: 'Max',  age: 28 },
+                {id: '2', name: 'Manu',  age: 27 },
+                {id: '3', name: 'Waqas',  age: 26 }
+            ],
+            showPersons: false
+    
+        };
+    }
+
+    componentWillMount() {
+        console.log("[app.js] Component will mount");
+    }
+
+    componentDidMount(){
+        console.log("[app.js] Component did mount");
+    }
     /**
      * JSX Restrictions:
      * class => className
@@ -28,15 +49,7 @@ class App extends Component {
      * State
      * class 
      */
-    state = {
-        persons : [
-            {id: '1', name: 'Max',  age: 28 },
-            {id: '2', name: 'Manu',  age: 27 },
-            {id: '3', name: 'Waqas',  age: 26 }
-        ],
-        showPersons: false
-
-    };
+    
 
     deletePersonHandler = (personIndex) => {
         /**
@@ -76,8 +89,7 @@ class App extends Component {
     }
 
     render(){
-      
-
+        console.log("[app.js] Inside render");
         /**
          * Conditional Output in JS
          */

@@ -3,8 +3,21 @@ import Person from './Person/Person';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBounday';
 
 class Persons extends Component{
-    
+    constructor(props){
+        super(props);
+        console.log("[Persons.js] Inside Constructor ", props);
+    }
+
+    componentWillMount() {
+        console.log("[Persons.js] Component will mount");
+    }
+
+    componentDidMount(){
+        console.log("[Persons.js] Component did mount");
+    }
+
     render(){
+        console.log("[Persons.js] Inside Rendering");
         return  this.props.persons.map( (person,index) =>{
             return (
                 <ErrorBoundary key = {person.id}> 
