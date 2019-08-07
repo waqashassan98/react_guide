@@ -13,7 +13,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
 
-//To add state we needed create a class which extends from component. Otherwise see the commented code
+//To add state, use this or use lifecycle hooks we needed create a class which extends from component. Otherwise see the commented code
 // below this class
 class App extends Component {
     /**
@@ -98,6 +98,7 @@ class App extends Component {
             
             <div className={appClasses.App}>
                 <Cockpit 
+                    title={this.props.title}
                     showPersons={this.state.showPersons} 
                     persons={this.state.persons}
                     clicked={this.togglePersonsHandler}
