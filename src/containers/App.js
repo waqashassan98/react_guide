@@ -9,8 +9,9 @@
 
 import React, {Component} from 'react';
 import appClasses from './App.module.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+// import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
 
 //To add state we needed create a class which extends from component. Otherwise see the commented code
 // below this class
@@ -69,9 +70,11 @@ class App extends Component {
             persons: persons
         });
     }
+
     togglePersonsHandler = () => {
         this.setState({showPersons: !this.state.showPersons});
     }
+
     render(){
       
 
@@ -79,46 +82,28 @@ class App extends Component {
          * Conditional Output in JS
          */
         let persons = null;
-        let btnClass = null;
 
         if(this.state.showPersons){
             persons = (
-                <div>
-                    {this.state.persons.map( (person,index) =>{
-                        return (
-                            <ErrorBoundary key = {person.id}> 
-                                <Person 
-                                    name={person.name} 
-                                    age={person.age} 
-                                    click={()=> this.deletePersonHandler(index)}
-                                    changed={(event) => this.nameChangedHandler(event, person.id)}
-                                />
-                            </ErrorBoundary>
-                        );
-                    })}
-                </div>
+                    <Persons 
+                        persons={this.state.persons}
+                        clicked={this.deletePersonHandler}
+                        changed={this.nameChangedHandler}
+                    />
             );
-            btnClass = appClasses.Red;
         }
-        let classes = [];
-        if(this.state.persons.length <=2){
-            classes.push(appClasses.red);
-        }
-        if(this.state.persons.length <=1) {
-            classes.push(appClasses.bold);
-        }
-        classes = classes.join(" ");
+       
 
         return (
+            
             <div className={appClasses.App}>
-                <h1>Hello. This is React</h1>
-                <p className={classes}>Following is a list of persons.</p>
-                <button 
-                    className={btnClass}
-                    onClick={this.togglePersonsHandler}
-                    >Toggle Persons</button>
-                {persons}
-            </div>
+                <Cockpit 
+                    showPersons={this.state.showPersons} 
+                    persons={this.state.persons}
+                    clicked={this.togglePersonsHandler}
+                />
+                {persons} 
+             </div>
         );
     };
    
