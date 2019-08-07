@@ -1,7 +1,7 @@
 /**
  * Last Lecture:
  * http://talentforge.vteamslabs.com/knowledge-base/react-the-complete-guide
- * Section 05. Part 04
+ * Section 07. Part 09
  * To add pseudo css selectors in jsx, we need a package, radium
  * With Radium, you can also add media queries
  * npm install --save radium

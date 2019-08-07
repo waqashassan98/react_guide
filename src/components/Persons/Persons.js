@@ -16,6 +16,27 @@ class Persons extends Component{
         console.log("[Persons.js] Component did mount");
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log("[Update Persons.js] Component will receive these props", nextProps);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log("[Update Persons.js] should component update? ", nextProps, nextState);
+        // return true;
+
+        //This doesn't deeply compare the object. Just the root object
+        return nextProps.persons !== this.props.persons;
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        console.log("[Update Persons.js] will component update? ", nextProps, nextState);
+    }
+
+    componentDidUpdate(){
+        //Use for side effects
+        console.log("[Update Persons.js] component did update");
+    }
+
     render(){
         console.log("[Persons.js] Inside Rendering");
         return  this.props.persons.map( (person,index) =>{
