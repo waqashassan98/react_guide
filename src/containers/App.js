@@ -113,7 +113,7 @@ class App extends PureComponent {
 
         return (
             
-            <fragment >
+            <div >
                 <Cockpit 
                     title={this.props.title}
                     showPersons={this.state.showPersons} 
@@ -121,7 +121,7 @@ class App extends PureComponent {
                     clicked={this.togglePersonsHandler}
                 />
                 {persons} 
-             </fragment>
+             </div>
         );
     };
    
