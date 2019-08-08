@@ -7,15 +7,20 @@
  * npm install --save radium
  */
 
-import React, {Component} from 'react';
+ /**
+  * Pure Component automatically detects if state has changed and therefore, should continue processing or not.
+  */
+import React, {PureComponent} from 'react';
 import appClasses from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from  '../hoc/withClass';
+
 // import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
 
 //To add state, use this or use lifecycle hooks we needed create a class which extends from component. Otherwise see the commented code
 // below this class
-class App extends Component {
+class App extends PureComponent {
     constructor(props){
         super(props);
         console.log("[app.js] Inside Constructor ", props);
@@ -108,7 +113,7 @@ class App extends Component {
 
         return (
             
-            <div className={appClasses.App}>
+            <fragment >
                 <Cockpit 
                     title={this.props.title}
                     showPersons={this.state.showPersons} 
@@ -116,11 +121,11 @@ class App extends Component {
                     clicked={this.togglePersonsHandler}
                 />
                 {persons} 
-             </div>
+             </fragment>
         );
     };
    
 }
 
 
-export default App;
+export default withClass(App, appClasses.App);
