@@ -101,10 +101,6 @@ class App extends PureComponent {
         // this.setState({showPersons: !this.state.showPersons});
     }
 
-    // togglePersonsHandler = () => {
-    //     this.setState({showPersons: !this.state.showPersons});
-    // }
-
     render(){
         console.log("[app.js] Inside render");
         /**
