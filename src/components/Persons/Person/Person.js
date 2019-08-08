@@ -20,7 +20,11 @@ class Person extends Component{
         if(this.props.position===0){
             this.inputElement.current.focus();    
         }
-        
+    }
+
+    focus(){
+        //will be used by persons
+        this.inputElement.current.focus();
     }
 
     /**
