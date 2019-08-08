@@ -91,6 +91,7 @@ class App extends PureComponent {
     }
     togglePersonsHandler = () => {
         const doesShow = this.state.showPersons;
+        //set states run asynchronously
         this.setState( (prevState, props) => {
             return {
                 showPersons: !doesShow,

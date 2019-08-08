@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Person from './Person/Person';
 import ErrorBoundary from '../../ErrorBoundary/ErrorBounday';
+import PropTypes from 'prop-types';
 
 class Persons extends Component{
     constructor(props){
@@ -54,5 +55,11 @@ class Persons extends Component{
     }
 }
 
+Person.PropTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default Persons;
