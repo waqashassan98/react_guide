@@ -30,7 +30,8 @@ class App extends PureComponent {
                 {id: '2', name: 'Manu',  age: 27 },
                 {id: '3', name: 'Waqas',  age: 26 }
             ],
-            showPersons: false
+            showPersons: false,
+            toggleClicked: 0
     
         };
     }
@@ -88,10 +89,20 @@ class App extends PureComponent {
             persons: persons
         });
     }
-
     togglePersonsHandler = () => {
-        this.setState({showPersons: !this.state.showPersons});
+        const doesShow = this.state.showPersons;
+        this.setState( (prevState, props) => {
+            return {
+                showPersons: !doesShow,
+                toggleClicked: prevState.toggleClicked + 1
+            }
+        } );
+        // this.setState({showPersons: !this.state.showPersons});
     }
+
+    // togglePersonsHandler = () => {
+    //     this.setState({showPersons: !this.state.showPersons});
+    // }
 
     render(){
         console.log("[app.js] Inside render");
