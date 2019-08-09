@@ -16,6 +16,11 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from  '../hoc/withClass';
 
+/**
+ * It works with providers and conusmers.
+ */
+export const AuthContext = React.createContext(false);// default value for authentication
+
 // import ErrorBoundary from '../ErrorBoundary/ErrorBounday';
 
 //To add state, use this or use lifecycle hooks we needed create a class which extends from component. Otherwise see the commented code
@@ -119,7 +124,6 @@ class App extends PureComponent {
                         persons={this.state.persons}
                         clicked={this.deletePersonHandler}
                         changed={this.nameChangedHandler}
-                        isAuthenticated={this.state.authenticated}
                     />
             );
         }
@@ -134,8 +138,10 @@ class App extends PureComponent {
                     login={this.loginHandler}
                     persons={this.state.persons}
                     clicked={this.togglePersonsHandler}
+                    
                 />
-                {persons} 
+                {/* Providing the context to all child components, no matter on which level they are */}
+                <AuthContext.Provider value={this.state.authenticated}>{persons}</AuthContext.Provider>
              </div>
         );
     };

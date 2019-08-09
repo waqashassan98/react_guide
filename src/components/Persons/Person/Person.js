@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from './Person.module.css';
+import { AuthContext } from '../../../containers/App';
 /**
  * Component is a function that returns jsx
  */
@@ -34,7 +35,9 @@ class Person extends Component{
         console.log("[Person.js] Inside Rendering");
         return ( 
             <div className={styles.Person} >
-                {this.props.authenticated? <p>I amm Authenticated</p> : null}
+                <AuthContext.Consumer>
+                    {auth => auth ? <p>I amm Authenticated</p> : null}
+                </AuthContext.Consumer>
                 <p onClick={this.props.click} >I m {this.props.name} and I am {this.props.age} years old</p>
                 <p>{this.props.children}</p>
                 <input 

@@ -51,7 +51,6 @@ class Persons extends Component{
                         position={index}
                         ref={this.lastPersonRef}
                         age={person.age} 
-                        authenticated={this.props.isAuthenticated}
                         click={()=> this.props.clicked(index)}
                         changed={(event) => this.props.changed(event, person.id)}
                     />
