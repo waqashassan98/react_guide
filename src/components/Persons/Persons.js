@@ -29,7 +29,7 @@ class Persons extends Component{
         // return true;
 
         //This doesn't deeply compare the object. Just the root object
-        return nextProps.persons !== this.props.persons;
+        return true;//nextProps.persons !== this.props.persons;
     }
 
     componentWillUpdate(nextProps, nextState){
@@ -51,6 +51,7 @@ class Persons extends Component{
                         position={index}
                         ref={this.lastPersonRef}
                         age={person.age} 
+                        authenticated={this.props.isAuthenticated}
                         click={()=> this.props.clicked(index)}
                         changed={(event) => this.props.changed(event, person.id)}
                     />
@@ -60,7 +61,7 @@ class Persons extends Component{
     }
 }
 
-Person.PropTypes = {
+Person.propTypes = {
     click: PropTypes.func,
     name: PropTypes.string,
     age: PropTypes.number,

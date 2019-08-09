@@ -34,7 +34,8 @@ class Person extends Component{
         console.log("[Person.js] Inside Rendering");
         return ( 
             <div className={styles.Person} >
-                <p onClick={this.props.click} >I'm {this.props.name} and I am {this.props.age} years old</p>
+                {this.props.authenticated? <p>I amm Authenticated</p> : null}
+                <p onClick={this.props.click} >I m {this.props.name} and I am {this.props.age} years old</p>
                 <p>{this.props.children}</p>
                 <input 
                     ref={ this.inputElement }
