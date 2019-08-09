@@ -42,13 +42,44 @@ class App extends PureComponent {
         };
     }
 
-    componentWillMount() {
-        console.log("[app.js] Component will mount");
-    }
+    // componentWillMount() {
+    //     console.log("[app.js] Component will mount");
+    // }
 
     componentDidMount(){
         console.log("[app.js] Component did mount");
     }
+
+    /**
+     * React 16.3's preferred lifecycle hook
+     * Run whenever the props are updated
+     * @param {object} nextProps 
+     * @param {object} prevState 
+     * 
+     * Returns a new state object
+     */
+    static getDerivedStateFromProps(nextProps, prevState){
+        console.log(
+            "[app.js] Inside: getDerivedStateFromProps",
+            nextProps,
+            prevState
+        );
+
+        return prevState;
+    }
+
+    /**
+     * Might be helpful in getting current scrolling position of the user
+     * and scroll the user back in component did update
+     * React 16.3 Lifecycle hook
+     */
+    getSnapshotBeforeUpdate(){
+        console.log(
+            "[app.js] Inside: getSnapshotBeforeUpdate"
+        );
+    }
+
+
     /**
      * JSX Restrictions:
      * class => className
